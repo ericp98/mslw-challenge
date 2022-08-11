@@ -7,14 +7,14 @@ import { useAppContext } from "../context/appContext";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Chart = ({ slidersData }) => {
-  const { getSlidersValues, getSlidersColors } = useAppContext();
+  const { getDataFromSliders } = useAppContext();
 
   const data = {
-    labels: [],
+    labels: getDataFromSliders("title"),
     datasets: [
       {
-        data: getSlidersValues(),
-        backgroundColor: getSlidersColors(),
+        data: getDataFromSliders("amount"),
+        backgroundColor: getDataFromSliders("color"),
         borderColor: "#fff",
         borderWidth: 2,
       },
@@ -35,12 +35,6 @@ const Chart = ({ slidersData }) => {
               plugins: {
                 legend: {
                   display: false,
-                  /* position: "bottom",
-                  align: "start",
-                  labels: {
-                    boxWidth: 15,
-                    boxHeight: 15,
-                  }, */
                 },
               },
             }}

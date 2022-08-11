@@ -65,20 +65,11 @@ export const AppProvider = ({ children }) => {
   };
 
   /* Get sliders values in Array */
-  const getSlidersValues = () => {
+  const getDataFromSliders = (data) => {
     let values = slidersData.map((slider) => {
-      return slider.amount;
+      return slider[data];
     });
-    console.log(values);
     return values;
-  };
-
-  /* Get array colors to set in chart */
-  const getSlidersColors = () => {
-    let colors = slidersData.map((slider) => {
-      return slider.color;
-    });
-    return colors;
   };
 
   const getTotalAmount = () => {
@@ -96,8 +87,7 @@ export const AppProvider = ({ children }) => {
         handlerSlidersData,
         showModal,
         handlerShowModal,
-        getSlidersValues,
-        getSlidersColors,
+        getDataFromSliders,
         getTotalAmount,
         amountDistribute,
         handlerAmountDistribute,

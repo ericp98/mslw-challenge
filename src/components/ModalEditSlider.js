@@ -30,14 +30,13 @@ const ModalEditSlider = () => {
           showModal.sliderTitle
         )
       ) {
-        /* handlerSlidersData(showModal.sliderTitle, parseInt(inputValue)); */
         setinputValue("");
         handlerShowModal();
       } else {
-        alert("not available distribute");
+        alert("El monto a distribuir no es suficiente");
       }
     } else {
-      alert("input out of range");
+      alert("El valor introducido esta fuera del rango disponible");
     }
   };
 

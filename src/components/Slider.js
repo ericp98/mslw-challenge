@@ -17,7 +17,7 @@ const Slider = ({ slider }) => {
     if (handlerAmountDistribute(multiply, amount, amountValue, title)) {
       setAmountValue(amount);
     } else {
-      alert("Not amount available to assign");
+      alert("El monto a distribuir no es suficiente");
     }
   };
 
@@ -34,37 +34,34 @@ const Slider = ({ slider }) => {
         <p>{slider.frequency}</p>
         <p className="uppercase">{slider.money}</p>
         <p>{slider.subtitle}</p>
-        <input
-          style={{
-            /* WebkitAppearance: "none", */
-            /* overflow: "hidden", */
-            accentColor: slider.color,
-            width: "100%",
-            height: "30px",
-            /* borderRadius: "3px",
-              backgroundColor: "#d9d9d9",
-               */
-          }}
-          type="range"
-          value={amountValue}
-          max={slider.maxAmount}
-          min={slider.minAmount}
-          onChange={(e) =>
-            handlerAmount(
-              slider.title,
-              slider.multiply,
-              parseInt(e.target.value)
-            )
-          }
-          /* id={slider.title} */
-          /* className="w-full py-4" */
-        />
+        <div className="slider-parent">
+          <input
+            style={{
+              accentColor: slider.color,
+              width: "100%",
+              height: "30px",
+            }}
+            name="foo"
+            type="range"
+            value={amountValue}
+            max={slider.maxAmount}
+            min={slider.minAmount}
+            onChange={(e) =>
+              handlerAmount(
+                slider.title,
+                slider.multiply,
+                parseInt(e.target.value)
+              )
+            }
+          />
+        </div>
       </div>
       <div className="flex justify-between text-gray-500 -mt-3">
         <p>{slider.minAmount}</p>
         <p>{slider.maxAmount}</p>
       </div>
-      <div className="flex justify-end mt-3">
+      <div className="flex w-full justify-between mt-3">
+        <p className="text-sm text-gray-400">Monto: {amountValue}</p>
         <div className="hover:cursor-pointer">
           <MdModeEditOutline
             onClick={() => handlerShowModal(slider, amountValue)}
