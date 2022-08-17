@@ -7,6 +7,7 @@ import Total from "../components/Total";
 import Button from "../components/SentButton";
 import ModalEditSlider from "../components/ModalEditSlider";
 import ModalSentData from "../components/ModalSentData";
+import SliderWarning from "../components/SliderWarning";
 
 // Context
 import { useAppContext } from "../context/appContext";
@@ -19,6 +20,7 @@ export default function Home() {
       <Head>
         <title>Maslow Challenge</title>
       </Head>
+      <SliderWarning />
       <div className="flex min-h-screen justify-center mx-auto flex-col md:flex-row lg:w-3/4 p-4">
         <div className="flex flex-col sm:w-full md:w-3/5 lg:w-2/3 p-4">
           <Sliders slidersData={slidersData} />

@@ -14,7 +14,6 @@ export const AppProvider = ({ children }) => {
 
   const [amountDistribute, setAmountDistribute] = useState(0);
   const handlerAmountDistribute = (multiply, newAmount, oldAmount, title) => {
-    let isValidAmount = true;
     let newAmountDistribute;
     if (newAmount < oldAmount) {
       newAmountDistribute =
@@ -23,16 +22,11 @@ export const AppProvider = ({ children }) => {
 
     if (newAmount > oldAmount) {
       newAmountDistribute =
-        amountDistribute - (newAmount - oldAmount) * multiply;
+        amountDistribute - (newAmount - oldAmount) / multiply;
     }
 
-    if (newAmountDistribute >= 0) {
-      setAmountDistribute(newAmountDistribute);
-      handlerSlidersData(title, newAmount);
-      return isValidAmount;
-    }
-
-    return !isValidAmount;
+    setAmountDistribute(newAmountDistribute);
+    handlerSlidersData(title, newAmount);
   };
 
   const [showModalSentData, setShowModalSentData] = useState(false);
@@ -52,6 +46,9 @@ export const AppProvider = ({ children }) => {
         })
       : setShowModal({ isOpen: !showModal.isOpen });
   };
+
+  const [showWarning, setShowWarning] = useState(false);
+  const handlerShowWarning = (bool) => setShowWarning(bool);
 
   /* Update amount in slidersData */
   const handlerSlidersData = (title, value) => {
@@ -94,6 +91,8 @@ export const AppProvider = ({ children }) => {
         showModalSentData,
         handlerShowModalSentData,
         reset,
+        showWarning,
+        handlerShowWarning,
       }}
     >
       {children}

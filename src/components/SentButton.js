@@ -7,7 +7,7 @@ const SentButton = ({ text, type, onClick }) => {
         type === "sent"
           ? "bg-emerald-400 hover:bg-emerald-500"
           : "bg-gray-400 hover:bg-gray-600"
-      } hover:cursor-pointer`}
+      } hover:cursor-pointer hover:shadow-md`}
     >
       <p className="text-slate-50 text-sm font-medium">{text}</p>
     </div>

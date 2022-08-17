@@ -14,11 +14,8 @@ const Slider = ({ slider }) => {
   }, [slider.amount]);
 
   const handlerAmount = (title, multiply, amount) => {
-    if (handlerAmountDistribute(multiply, amount, amountValue, title)) {
-      setAmountValue(amount);
-    } else {
-      alert("El monto a distribuir no es suficiente");
-    }
+    handlerAmountDistribute(multiply, amount, amountValue, title);
+    setAmountValue(amount);
   };
 
   return (
